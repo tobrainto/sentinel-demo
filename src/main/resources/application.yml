@@ -1,0 +1,39 @@
+server:
+  port: 8090
+  shutdown: GRACEFUL # tomcat 优雅停机
+  tomcat:
+    mbeanregistry:
+      enabled: true  # 开启 Tomcat Metrics
+
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  lifecycle:
+    timeout-per-shutdown-phase: "20s" # 优雅停机等待时间
+
+# @see https://docs.spring.io/spring-boot/docs/current/reference/html/actuator.html
+management:
+  endpoint:
+    shutdown:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: "health,env,metrics,shutdown"
+
+
+springdoc:
+  swagger-ui:
+    docExpansion: none
+    display-request-duration: true
+    showExtensions: true
+    showCommonExtensions: true
+    operationsSorter: method
+    disable-swagger-default-url: true
+    use-root-path: true
+    show-actuator: false
+  api-docs:
+    enabled: true
+    path: /api-docs
+    resolve-schema-properties: true
+  writer-with-default-pretty-printer: true
