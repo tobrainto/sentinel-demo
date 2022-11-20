@@ -1,1 +1,1 @@
-# Sentinel Cannot Shutdown GracefuL Demo
+# Sentinel Cannot Graceful Shutdown Demo
